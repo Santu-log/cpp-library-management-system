@@ -1,62 +1,137 @@
-# Library Management System (C++17)
+# 📚 Library Management System
 
-A modular, menu-driven console application using **only C++17 and the C++ Standard Library**. Records are persisted locally in plain-text files using only the C++ Standard Library. No SQL, database, API, or third-party library is used.
+A menu-driven **Library Management System built with C++17** that demonstrates object-oriented programming, file handling, STL containers, exception handling, and modular software design.
 
-## Features
-- Add, list, search (title/author/ISBN), update, and delete books
-- Register, list, and remove members
-- Issue and return books, with per-copy availability tracking
-- Track active, returned, and overdue loans
-- Calculate overdue fines at **Rs 5 per day** after a **14-day loan period**
-- Library statistics and input/error validation
-- Automatic file persistence in `books.txt`, `members.txt`, and `loans.txt`
-- Prevent deleting books or members that have active loans; prevent duplicate IDs/ISBNs
+Manage books, members, and borrowing records through a simple console interface, with file-based persistence to retain data across application restarts.
 
-## Requirements
-- CMake 3.16 or newer
-- A C++17 compiler (GCC, Clang, or MSVC / Visual Studio Build Tools)
-- VS Code is optional; install a C++ extension and CMake Tools extension for a convenient workflow.
+## ✨ Features
 
-## Build and run (Windows PowerShell)
-Open PowerShell in this project directory. Ensure CMake and a compiler are on PATH. For MSVC, launch a Developer PowerShell or configure Visual Studio Build Tools first.
+- **Book Management:** Add, search, display, update, and delete books.
+- **Member Management:** Register and manage library members.
+- **Loan Management:** Issue and return books while tracking active loans.
+- **Availability Tracking:** Maintain total and available book copies.
+- **Overdue Fines:** Calculate fines for overdue books.
+- **Persistent Storage:** Store books, members, and loans in text files.
+- **Input Validation:** Handle invalid input and exceptional conditions.
+- **Library Statistics:** View book inventory, members, and loan information.
+
+## 🛠️ Tech Stack
+
+- **Language:** C++17
+- **Core Concepts:** OOP, STL, file handling, exception handling
+- **Build System:** CMake
+- **Testing:** CTest and C++ test executable
+- **Storage:** Local text files; no external database or third-party libraries
+
+## 🏗️ Object-Oriented Design
+
+The project uses the following classes:
+
+| Class | Responsibility |
+|---|---|
+| `Book` | Stores book information and copy counts |
+| `User` | Abstract base class for library users |
+| `Admin` | Represents administrative operations |
+| `Member` | Represents registered library members |
+| `Loan` | Tracks borrowing, due dates, returns, and fines |
+| `Library` | Manages books, members, and loans |
+| `LibraryManagementSystem` | Coordinates the application interface |
+
+The implementation demonstrates encapsulation, abstraction, inheritance, polymorphism, constructors, virtual functions, composition, and smart pointers.
+
+## 💾 Data Persistence
+
+The application stores records in three local text files:
+
+- `books.txt` — book details and copy counts
+- `members.txt` — registered member details
+- `loans.txt` — loan records, dates, and return status
+
+Records are loaded when the application starts and saved as the application updates its data. Keep these files together in the application's working directory.
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- A C++17-compatible compiler
+- CMake
+- MinGW Make or another supported build tool
+
+### Build on Windows using PowerShell
+
+Clone the repository:
 
 ```powershell
-cmake -S . -B build
-cmake --build build --config Release
-ctest --test-dir build -C Release --output-on-failure
-.\build\Release\library_management.exe
+git clone https://github.com/YOUR-USERNAME/cpp-library-management-system.git
+cd cpp-library-management-system
 ```
 
-If using MinGW GCC, the executable is commonly at `build\library_management.exe` instead:
+Configure the project:
 
 ```powershell
 cmake -S . -B build -G "MinGW Makefiles"
+```
+
+Build the application:
+
+```powershell
 cmake --build build
+```
+
+Run the automated tests:
+
+```powershell
 ctest --test-dir build --output-on-failure
+```
+
+Launch the application:
+
+```powershell
 .\build\library_management.exe
 ```
 
-## Build and run (Linux/macOS)
-```bash
-cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
-cmake --build build
-ctest --test-dir build --output-on-failure
-./build/library_management
-```
+Replace `YOUR-USERNAME` with your GitHub username. These commands assume MinGW and CMake are installed and available in PATH.
 
-## Quick usage
-Choose a menu number, enter the requested values, and use the generated Loan ID when returning a book. Book IDs and member IDs are supplied by the operator and must be unique within their type. Search is case-insensitive. Dates use the system clock. The app has no login/authentication. Data files are read and written relative to the working directory used to launch the executable.
+## 📂 Project Structure
 
-## Project layout
 ```text
-include/       Public class declarations
-src/           Implementations and application entry point
-tests/         Automated core-feature tests
-CMakeLists.txt Build configuration
-OOP_CONCEPTS.md OOP feature-to-code mapping
+library-management-system/
+├── include/       # Header files
+├── src/           # Class implementations and main.cpp
+├── tests/         # Automated tests
+├── CMakeLists.txt
+├── README.md
+├── OOP_CONCEPTS.md
+└── .gitignore
 ```
 
-## Notes / limitations
-- Persistent records are stored in plain-text files in the current working directory. Keep the three files together and do not edit them while the application is running.
-- The Admin class demonstrates inheritance/polymorphism, while this console version does not include a login or role-based authorization workflow.
-- Fines use calendar-independent 24-hour periods and are rounded up to whole overdue days.
+## 🧪 Testing
+
+The project includes a C++ test executable that can be run through CTest. Tests cover core library operations and validation. Run the test command above to verify the current build.
+
+## 🎯 Learning Objectives
+
+This project demonstrates practical C++ skills relevant to software development interviews:
+
+- Designing classes and managing object relationships
+- Applying OOP principles to a real-world problem
+- Using STL containers for in-memory management
+- Implementing file-based persistence
+- Handling invalid operations and exceptions
+- Organizing and building a modular C++ application
+
+## 🔮 Future Improvements
+
+- Search and filtering enhancements
+- Stronger automated test coverage
+- File-format validation and recovery
+- Role-based authorization
+- A graphical user interface
+
+## 📄 License
+
+Add a license if you intend to publish the project for reuse. Until then, no license is specified.
+
+---
+
+**Built with C++17 and the Standard Library.**
