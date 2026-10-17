@@ -1,0 +1,7 @@
+build/
+*.exe
+*.obj
+*.a
+books.txt
+members.txt
+loans.txt
